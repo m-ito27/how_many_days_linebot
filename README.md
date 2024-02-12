@@ -6,7 +6,7 @@
 ## 実装方法など
 
 - Ruby
-  - `app.rb`でrubyのプログラムむとして作成しています。
+  - `app.rb`でrubyのプログラムとして作成しています。
 - LINE Messaging API
   - `line-bot-api` gemを利用しています。
 - Github Actions
