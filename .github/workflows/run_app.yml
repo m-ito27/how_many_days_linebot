@@ -1,0 +1,31 @@
+name: Run app
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 日本時間でAM9:00
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.1.2'
+
+    - name: Bundle Install
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Run app.rb
+      env:
+        LINEBOT_CHANNEL_SECRET: ${{ secrets.LINEBOT_CHANNEL_SECRET }}
+        LINEBOT_ACCESS_TOKEN: ${{ secrets.LINEBOT_ACCESS_TOKEN }}
+        BIRTH_DAY: ${{ secrets.BIRTH_DAY }}
+      run: ruby app.rb
