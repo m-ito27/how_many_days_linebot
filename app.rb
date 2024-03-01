@@ -43,7 +43,7 @@ def year_month_day
     # 例: 今日が10日で誕生日が20日なら前月の最終日を確認しながら計算する
     prev_month_date = TODAY.prev_month
     prev_max_date = Date.new(prev_month_date.year, prev_month_date.month, -1).day
-    passed_day = (previous_max_date - BIRTH_DAY_NUM) + TODAY_DAT_NUM
+    passed_day = (prev_max_date - BIRTH_DAY_NUM) + TODAY_DAT_NUM
     # このケースだと、たとえば今が5月で誕生月が4月の場合、1月も経っていないので-1する
     passed_month -= 1
   end
